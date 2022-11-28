@@ -6,6 +6,7 @@ const usersRouter = require('./router/users');
 const indexRouter = require('./router')
 var bodyParser = require('body-parser')
 
+
 app.set('port',process.env.PORT||3000);
 
 //morgan 설정
@@ -20,7 +21,7 @@ app.use('/users',usersRouter);
 
 app.use('*',(req,res,next)=>{
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
-    res.send("라우터가 없습니다.")
+    res.status(400).send("라우터가 없습니다.")
 })
 
 module.exports = app;

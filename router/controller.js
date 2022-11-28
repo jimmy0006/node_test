@@ -3,7 +3,6 @@ const User = require('../schemas/user')
 
 exports.findAll = async (req,res)=>{
     try{
-        console.log('userRouter');
         const users = await User.find({});
         res.json(users);
     }catch(err){
@@ -18,7 +17,6 @@ exports.postOne = async (req,res)=>{
             age:req.body.age,
             married:req.body.married,
         });
-        console.log(user);
         res.status(201).json(user);
     }catch(err){
         console.error(err);

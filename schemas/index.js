@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const connect = ()=>{
-    if(process.env.NODE_ENV !== 'production'){
-        mongoose.set('debug',true);
-    }
-    mongoose.connect('mongodb://localhost:27017/fs',{
+    // if(process.env.NODE_ENV !== 'production'){
+    //     mongoose.set('debug',true);
+    // }
+    mongoose.connect(`mongodb://localhost:27017/${process.env.DATABASE_NAME}`,{
         useNewUrlParser:true,
     },(error)=>{
         if(error){
             console.log('몽고디비 연결 에러',error);
         }else{
-            console.log('몽고디비 연결 성공');
+            // console.log('몽고디비 연결 성공');
         }
     });
 };
